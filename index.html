@@ -99,10 +99,10 @@ h1{
   animation: fadeIn 1.2s forwards;
 }
 
-/* মেসেঞ্জার বাটন */
+/* হোয়াটসঅ্যাপ বাটন */
 .msg-btn {
   margin-top: 30px;
-  background: #0084ff;
+  background: #25D366; /* WhatsApp Green */
   color: white;
   padding: 12px 25px;
   border-radius: 30px;
@@ -110,11 +110,11 @@ h1{
   font-weight: bold;
   font-size: 15px;
   display: inline-block;
-  box-shadow: 0 5px 20px rgba(0, 132, 255, 0.4);
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
   transition: 0.3s;
 }
 
-.msg-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 132, 255, 0.5); }
+.msg-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
 
 @keyframes fadeIn {
   from {opacity:0; transform: translateY(15px);}
@@ -146,7 +146,7 @@ h1{
   <div class="card">
     <h1 id="title">Laboni <span>✨</span></h1>
     <div id="text"></div>
-    <button class="btn" id="btn">একটা কথা শুনবে? 💫</button>
+    <button class="btn" id="btn" onclick="startSurprise()">একটা কথা শুনবে? 💫</button>
     
     <div class="final" id="final">
       তুমি হয়তো জানো না,<br>
@@ -154,7 +154,7 @@ h1{
       <b>তুমিই উজ্জ্বলতম নক্ষত্র।</b><br><br>
       খুব যত্নে রাখা এক অনুভূতি...<br>
       🌙<br>
-      <a href="https://m.me/janealam1920" target="_blank" class="msg-btn">আমাকে কিছু বলতে চাও? </a>
+      <a href="https://api.whatsapp.com/send?phone=8801753661920&text=I%20Love%20You ❤️" target="_blank" class="msg-btn">আমাকে কিছু বলতে চাও? 💚</a>
     </div>
   </div>
 </div>
@@ -213,22 +213,16 @@ function typeEffect() {
 }
 window.onload = typeEffect;
 
-const btn = document.getElementById("btn");
-const final = document.getElementById("final");
-const bgMusic = document.getElementById("bgMusic");
+function startSurprise() {
+  const bgMusic = document.getElementById("bgMusic");
+  bgMusic.play().catch(e => console.log("Audio play blocked"));
 
-btn.onclick = () => {
-  // মিউজিক প্লে করা
-  bgMusic.play().catch(error => {
-    console.log("Audio play blocked by browser. User interaction required.");
-  });
-
-  textEl.style.display = "none"; 
-  btn.style.display = "none"; 
-  final.style.display = "block"; 
+  document.getElementById("text").style.display = "none"; 
+  document.getElementById("btn").style.display = "none"; 
+  document.getElementById("final").style.display = "block"; 
   document.getElementById("title").innerHTML = "For You ❤️";
   createExplosion();
-};
+}
 
 function createExplosion() {
   for(let i=0; i<50; i++) {
